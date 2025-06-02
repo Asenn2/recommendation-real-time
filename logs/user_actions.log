@@ -1,0 +1,5 @@
+{"product":"155","action":"PutInCart","user":"1","timestamp":"2025-05-27T13:59:54.551474900Z"}
+{"product":"269","action":"PutInCart","user":"1","timestamp":"2025-05-27T13:59:57.874721Z"}
+{"product":"155","action":"click","user":"1","timestamp":"2025-05-27T13:59:59.822268900Z"}
+{"product":"155","action":"PutInCart","user":"4","timestamp":"2025-05-27T14:00:37.855022400Z"}
+{"product":"155","action":"click","user":"4","timestamp":"2025-05-27T14:00:39.505321100Z"}

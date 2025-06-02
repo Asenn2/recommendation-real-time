@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Your head content -->
+  <title>Order Confirmation</title>
+</head>
+<body>
+<div class="container">
+  <h1>Order Confirmation</h1>
+  <div th:if="${order}">
+    <p>Thank you for your order! Your order number is: <span th:text="${order.id}"></span></p>
+    <p>Order total: $<span th:text="${#numbers.formatDecimal(order.totalAmount, 1, 2)}"></span></p>
+    <p>Status: <span th:text="${order.status}"></span></p>
+
+    <h3>Order Items</h3>
+    <div th:each="item : ${order.items}">
+      <div>
+        <span th:text="${item.product.name}"></span> -
+        <span th:text="${item.quantity}"></span> x
+        $<span th:text="${#numbers.formatDecimal(item.priceAtOrderTime, 1, 2)}"></span>
+      </div>
+    </div>
+
+    <a href="/home" class="btn btn-primary">Continue Shopping</a>
+  </div>
+</div>
+</body>
+</html>

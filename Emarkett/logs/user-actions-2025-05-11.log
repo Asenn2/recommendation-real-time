@@ -1,0 +1,11 @@
+{"user": "001", "product": "101", "action": "view", "timestamp": "2025-05-08T10:00:00Z"} 
+{"user": "001", "product": "101", "action": "click", "timestamp": "2025-05-08T10:01:30Z"} 
+{"user": "002", "product": "102", "action": "click", "timestamp": "2025-05-08T10:05:00Z"} 
+{"user": "001", "product": "103", "action": "purchase", "timestamp": "2025-05-08T11:00:00Z"} 
+{"user": "002", "product": "101", "action": "click", "timestamp": "2025-05-08T11:03:00Z"} 
+{"user": "002", "product": "104", "action": "purchase", "timestamp": "2025-05-08T11:05:00Z"} 
+{"user": "003", "product": "101", "action": "view", "timestamp": "2025-05-08T12:00:00Z"} 
+{"user": "003", "product": "102", "action": "view", "timestamp": "2025-05-08T12:02:00Z"} 
+{"user": "003", "product": "102", "action": "click", "timestamp": "2025-05-08T12:03:30Z"} 
+{"user": "003", "product": "105", "action": "purchase", "timestamp": "2025-05-08T12:10:00Z"} 
+{"user": "003", "product": "103", "action": "click", "timestamp": "2025-05-08T12:15:00Z"} 

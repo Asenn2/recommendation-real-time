@@ -1,0 +1,73 @@
+
+services:
+
+  hbase:
+    image: harisekhon/hbase:1.4
+    container_name: hbase
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+    volumes:
+      - ./hbase_data:/hbase-data
+    ports:
+      - "16010:16010"
+      - "2181:2181"
+      - "9090:9090"
+    networks:
+      - flume-net
+
+  spark-master:
+    image: sparkhbase:latest
+    container_name: spark-master
+    user: root
+    environment:
+      - SPARK_MODE=master
+      - SPARK_USER=spark
+    ports:
+      - "7077:7077"        
+      - "8080:8080"        
+    volumes:
+      - ./conf/hbase-site.xml:/opt/bitnami/spark/conf/hbase-site.xml
+      - ./spark/code:/opt/bitnami/spark/code
+      - ./spark/products.json:/opt/bitnami/spark/code/products.json	
+    networks:
+      - flume-net
+
+  spark-worker:
+    image: bitnami/spark:3.5.0
+    container_name: spark-worker
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_USER=spark
+    depends_on:
+      - spark-master
+    networks:
+      - flume-net
+  flume:
+    image: flume_hbase:latest
+    container_name: flume 	
+    environment:
+      FLUME_AGENT_NAME: agent
+    volumes:
+      - ./conf/flume-agent.conf:/opt/flume/conf/flume.conf:ro 
+      - ./logs:/opt/flume/input:rw
+      - ./conf/hbase-site.xml:/opt/flume/conf/hbase-site.xml
+    entrypoint: ["flume-ng"]
+    command: 
+      - "agent"
+      - "--conf"
+      - "/opt/flume/conf"
+      - "--conf-file"
+      - "/opt/flume/conf/flume.conf"
+      - "--name"
+      - "agent"
+      - "-Dflume.root.logger=INFO,console"
+    depends_on:
+      - hbase
+    networks:
+      - flume-net
+
+
+networks:
+  flume-net:
+    driver: bridge

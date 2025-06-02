@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="USER_ACTIONS" class="ch.qos.logback.core.FileAppender">
+        <file>D:\test\logs\user_actions.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%msg%n</pattern> <!-- Pour avoir uniquement le JSON brut -->
+        </encoder>
+    </appender>
+
+    <logger name="USER_ACTION_LOGGER" level="INFO" additivity="false">
+        <appender-ref ref="USER_ACTIONS" />
+    </logger>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+
