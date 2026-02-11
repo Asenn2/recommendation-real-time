@@ -310,57 +310,8 @@ docker logs spark-master
 tail -f logs/user_actions.log
 ```
 
-## 🐛 Dépannage
-
-### Les services ne démarrent pas
-```bash
-# Vérifier l'état des conteneurs
-docker-compose ps
-
-# Vérifier les logs d'un service spécifique
-docker-compose logs <nom_service>
-
-# Redémarrer tous les services
-docker-compose restart
-```
-
-### HBase n'est pas accessible
-```bash
-# Vérifier que HBase est bien démarré
-docker exec -it hbase bash
-hbase version
-
-# Vérifier le processus Thrift
-jps | grep Thrift
-```
-
-### Problème de connexion à HBase depuis Spark
-Assurez-vous que le fichier `conf/hbase-site.xml` est correctement monté dans les conteneurs et contient la bonne configuration.
-
-## 🤝 Contribution
-
-Les contributions sont les bienvenues ! Pour contribuer :
-
-1. Forkez le projet
-2. Créez une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Poussez vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
-
-## 📝 License
-
-Ce projet est un projet éducatif/démonstration. Veuillez consulter les licenses des différentes technologies utilisées.
-
 ## 👥 Auteurs
 
-- Asenn2 - *Travail initial* - [Asenn2](https://github.com/Asenn2)
-
-## 🙏 Remerciements
-
-- Apache Software Foundation pour HBase, Flume et Spark
-- L'équipe Spring pour Spring Boot
-- La communauté open-source pour tous les outils utilisés
-
----
+- Asenn2 
 
 **Note** : Ce README suppose que vous avez une configuration MySQL existante pour l'application Emarket. Assurez-vous de configurer les propriétés de connexion dans `Emarket/src/main/resources/application.properties`.
